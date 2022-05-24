@@ -12,7 +12,7 @@ export default function ResultCard({
     <View style={[style, styles.container]}>
       <View style={styles.result}>
         <Text style={styles.text}>
-          %{value ? (value * 100).toFixed(2) : null}
+          {value ? (value * 100).toFixed(2) : null}%
         </Text>
       </View>
       <Label style={{ paddingVertical: 29 }}>
