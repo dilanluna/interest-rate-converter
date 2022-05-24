@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react';
 import Label from '@components/label';
 import TextInput from '@components/input';
+import { useEffect, useState } from 'react';
 import { CalculateProps } from 'types/navigation';
 import ResultCard from '@features/rates/result-card';
 import { useRateById } from '@features/rates/rates-context';
@@ -28,6 +28,15 @@ function convertNominalToEffectiveInterestRate(
   return (1 + nominalIntersetRate / frequency) ** frequency - 1;
 }
 
+function convertEffectiveToNominalInterestRate(
+  effectiveInterestRate: number,
+  periodicity: string,
+  compounded: string,
+): number {
+  const frequency = frequencies[compounded] / frequencies[periodicity];
+  return frequency * ((effectiveInterestRate + 1) ** (1 / frequency) - 1);
+}
+
 export default function Calculate({ route }: CalculateProps) {
   const [result, setResult] = useState<number>();
   const operation = useRateById(route.params.rateId);
@@ -39,15 +48,28 @@ export default function Calculate({ route }: CalculateProps) {
     const rateIsAValidNumber = !isNaN(Number(rateText));
     if (rateIsAValidNumber && periodicity && compounded) {
       const rate = Number(rateText);
-      setResult(
-        convertNominalToEffectiveInterestRate(
-          rate / 100,
-          periodicity,
-          compounded,
-        ),
-      );
+
+      if (operation?.id === 'nominal-rate-to-effective-rate') {
+        setResult(
+          convertNominalToEffectiveInterestRate(
+            rate / 100,
+            periodicity,
+            compounded,
+          ),
+        );
+      }
+
+      if (operation?.id === 'effective-rate-to-nominal-rate') {
+        setResult(
+          convertEffectiveToNominalInterestRate(
+            rate / 100,
+            periodicity,
+            compounded,
+          ),
+        );
+      }
     }
-  }, [rateText, periodicity, compounded]);
+  }, [rateText, periodicity, compounded, operation]);
 
   return (
     <SafeAreaView>
@@ -66,8 +88,20 @@ export default function Calculate({ route }: CalculateProps) {
         </View>
 
         <View style={{ marginBottom: 20 }}>
-          <Text style={styles.title}>Periodicidad Deseada</Text>
-          <Label>Periodicidad</Label>
+          <Text style={styles.title}>
+            {operation?.id === 'nominal-rate-to-effective-rate'
+              ? 'Periodicidad deseada'
+              : operation?.id === 'effective-rate-to-nominal-rate'
+              ? 'Capitalización deseada'
+              : null}
+          </Text>
+          <Label>
+            {operation?.id === 'nominal-rate-to-effective-rate'
+              ? 'Periodicidad'
+              : operation?.id === 'effective-rate-to-nominal-rate'
+              ? 'Valor'
+              : null}
+          </Label>
           <PeriodicitySelect
             value={periodicity}
             onChange={(value) => setPeriodicity(value)}
@@ -75,7 +109,13 @@ export default function Calculate({ route }: CalculateProps) {
         </View>
 
         <View style={{ marginBottom: 20 }}>
-          <Text style={styles.title}>Ingresa la capitalización</Text>
+          <Text style={styles.title}>
+            {operation?.id === 'nominal-rate-to-effective-rate'
+              ? 'Ingresa la capitalización'
+              : operation?.id === 'effective-rate-to-nominal-rate'
+              ? 'Ingresa la periodicidad'
+              : null}
+          </Text>
           <Label>Periodicidad</Label>
           <PeriodicitySelect
             value={compounded}

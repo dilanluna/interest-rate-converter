@@ -15,12 +15,12 @@ const rates: Rate[] = [
     description:
       'Pasa de una tasa que considera solo el capital invertido a una que considera capital más intereses que se van generando.',
   },
-  // {
-  //   id: 'effective-rate-to-nominal-rate',
-  //   title: 'De tasa efectiva a tasa nominal',
-  //   description:
-  //     'Pasa de una tasa que considera capital más intereses que se van generando a una tasa que considera solo el capital invertido.',
-  // },
+  {
+    id: 'effective-rate-to-nominal-rate',
+    title: 'De tasa efectiva a tasa nominal',
+    description:
+      'Pasa de una tasa que considera capital más intereses que se van generando a una tasa que considera solo el capital invertido.',
+  },
   // {
   //   id: 'effective-rate-to-effective-rate-distinct-periods',
   //   title: 'De tasa efectiva a efectiva (distintas periodicidades)',
