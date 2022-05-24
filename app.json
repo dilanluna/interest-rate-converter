@@ -2,7 +2,7 @@
   "expo": {
     "name": "interest-rate-converter",
     "slug": "interest-rate-converter",
-    "version": "1.0.0",
+    "version": "0.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -14,9 +14,7 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true
     },
@@ -25,7 +23,8 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
       },
-      "package": "com.dilanluna.interestrateconverter"
+      "package": "com.dilanluna.interestrateconverter",
+      "versionCode": 1
     },
     "web": {
       "favicon": "./assets/favicon.png"
