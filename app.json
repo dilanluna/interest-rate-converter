@@ -14,9 +14,7 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true
     },
@@ -26,7 +24,7 @@
         "backgroundColor": "#FFFFFF"
       },
       "package": "com.dilanluna.interestrateconverter",
-      "versionCode": 450010101
+      "versionCode": 2
     },
     "web": {
       "favicon": "./assets/favicon.png"

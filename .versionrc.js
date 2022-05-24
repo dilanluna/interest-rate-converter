@@ -9,7 +9,7 @@ module.exports = {
     },
     {
       filename: 'app.json',
-      updater: require.resolve('standard-version-expo/android'),
+      updater: require.resolve('standard-version-expo/android/increment'),
     },
   ],
 };
