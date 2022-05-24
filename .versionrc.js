@@ -7,5 +7,9 @@ module.exports = {
       filename: 'app.json',
       updater: require.resolve('standard-version-expo'),
     },
+    {
+      filename: 'app.json',
+      updater: require.resolve('standard-version-expo/android'),
+    },
   ],
 };
