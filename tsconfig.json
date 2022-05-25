@@ -4,6 +4,7 @@
     "strict": true,
     "baseUrl": "./",
     "paths": {
+      "@consts": ["./src/consts"],
       "types/*": ["./src/types/*"],
       "@screens/*": ["./src/screens/*"],
       "@features/*": ["./src/features/*"],

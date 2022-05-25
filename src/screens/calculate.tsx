@@ -1,4 +1,5 @@
 import Label from '@components/label';
+import { frequencies } from '@consts';
 import TextInput from '@components/input';
 import { useEffect, useState } from 'react';
 import { CalculateProps } from 'types/navigation';
@@ -8,16 +9,6 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import PeriodicitySelect from '@features/rates/periodicity-select';
 import RateCalcHeaderTitle from '@features/rates/rate-calc-header-title';
-
-const frequencies: { [key: string]: number } = {
-  yearly: 360,
-  semiannual: 180,
-  quarterly: 120,
-  // quarterly: 90,
-  bimonthly: 60,
-  monthly: 30,
-  daily: 1,
-};
 
 function convertNominalToEffectiveInterestRate(
   nominalIntersetRate: number,

@@ -4,6 +4,7 @@ import { createContext, ReactNode, useContext, useMemo } from 'react';
 type InterestRateContextType = {
   rates: Rate[];
 };
+
 const InterestRateContext = createContext<InterestRateContextType | undefined>(
   undefined,
 );
