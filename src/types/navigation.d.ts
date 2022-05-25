@@ -1,8 +1,9 @@
+import { OperationValue } from '@consts';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 
 export type StackParamList = {
   Rates: undefined;
-  Calculate: { rateId: string };
+  Calculate: { rateId: OperationValue };
 };
 
 export type RatesProps = NativeStackScreenProps<StackParamList, 'Rates'>;
@@ -13,7 +14,7 @@ export type CalculateProps = NativeStackScreenProps<
 >;
 
 export type Rate = {
-  id: string;
+  id: OperationValue;
   title: string;
   description: string;
 };

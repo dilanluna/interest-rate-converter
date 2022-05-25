@@ -1,7 +1,7 @@
+import { rates } from '@consts';
 import { Rate } from 'types/navigation';
 import { FlatList, View } from 'react-native';
 import RateCard from '@features/rates/rate-card';
-import { useRates } from '@features/rates/rates-context';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import RatesHeaderTitle from '@features/rates/rates-header-title';
 
@@ -16,8 +16,6 @@ function rateCardRenderItem({ item }: { item: Rate }) {
 }
 
 export default function Rates() {
-  const rates = useRates();
-
   return (
     <SafeAreaView>
       <FlatList

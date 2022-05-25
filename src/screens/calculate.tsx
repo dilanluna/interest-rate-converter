@@ -1,18 +1,21 @@
-import { Frequency } from '@consts';
 import Label from '@components/label';
 import TextInput from '@components/input';
-import { useEffect, useState } from 'react';
 import { CalculateProps } from 'types/navigation';
 import ResultCard from '@features/rates/result-card';
-import { useRateById } from '@features/rates/rates-context';
+import { useEffect, useMemo, useState } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import PeriodicitySelect from '@features/rates/periodicity-select';
+import { Frequency, operations, OperationValue, rates } from '@consts';
 import RateCalcHeaderTitle from '@features/rates/rate-calc-header-title';
 import {
   convertEffectiveToNominalInterestRate,
   convertNominalToEffectiveInterestRate,
 } from '@utils/calcs';
+
+const useRateById = (rateId: OperationValue) => {
+  return useMemo(() => rates.find(({ id }) => id === rateId), [rateId]);
+};
 
 export default function Calculate({ route }: CalculateProps) {
   const [result, setResult] = useState<number>();
@@ -26,7 +29,7 @@ export default function Calculate({ route }: CalculateProps) {
     if (rateIsAValidNumber && periodicity && compounded) {
       const rate = Number(rateText);
 
-      if (operation?.id === 'nominal-rate-to-effective-rate') {
+      if (operation?.id === operations.NOMINAL_RATE_TO_EFFECTIVE_RATE) {
         setResult(
           convertNominalToEffectiveInterestRate(
             rate / 100,
@@ -36,7 +39,7 @@ export default function Calculate({ route }: CalculateProps) {
         );
       }
 
-      if (operation?.id === 'effective-rate-to-nominal-rate') {
+      if (operation?.id === operations.EFFECTIVE_RATE_TO_NOMINAL_RATE) {
         setResult(
           convertEffectiveToNominalInterestRate(
             rate / 100,
@@ -66,16 +69,16 @@ export default function Calculate({ route }: CalculateProps) {
 
         <View style={{ marginBottom: 20 }}>
           <Text style={styles.title}>
-            {operation?.id === 'nominal-rate-to-effective-rate'
+            {operation?.id === operations.NOMINAL_RATE_TO_EFFECTIVE_RATE
               ? 'Periodicidad deseada'
-              : operation?.id === 'effective-rate-to-nominal-rate'
+              : operation?.id === operations.EFFECTIVE_RATE_TO_NOMINAL_RATE
               ? 'Capitalización deseada'
               : null}
           </Text>
           <Label>
-            {operation?.id === 'nominal-rate-to-effective-rate'
+            {operation?.id === operations.NOMINAL_RATE_TO_EFFECTIVE_RATE
               ? 'Periodicidad'
-              : operation?.id === 'effective-rate-to-nominal-rate'
+              : operation?.id === operations.EFFECTIVE_RATE_TO_NOMINAL_RATE
               ? 'Valor'
               : null}
           </Label>
@@ -87,9 +90,9 @@ export default function Calculate({ route }: CalculateProps) {
 
         <View style={{ marginBottom: 20 }}>
           <Text style={styles.title}>
-            {operation?.id === 'nominal-rate-to-effective-rate'
+            {operation?.id === operations.NOMINAL_RATE_TO_EFFECTIVE_RATE
               ? 'Ingresa la capitalización'
-              : operation?.id === 'effective-rate-to-nominal-rate'
+              : operation?.id === operations.EFFECTIVE_RATE_TO_NOMINAL_RATE
               ? 'Ingresa la periodicidad'
               : null}
           </Text>

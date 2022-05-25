@@ -1,4 +1,5 @@
 import Button from '@components/button';
+import { OperationValue } from '@consts';
 import { RatesProps } from 'types/navigation';
 import { MaterialIcons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
@@ -10,7 +11,7 @@ export default function RateCard({
   style,
   description,
 }: {
-  id: string;
+  id: OperationValue;
   title: string;
   description: string;
   style?: StyleProp<ViewStyle>;
