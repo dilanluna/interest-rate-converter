@@ -32,7 +32,6 @@ export default function Select<T extends Item, V>({
       {placeholder && (
         <Picker.Item
           value="none"
-          enabled={false}
           label={placeholder}
         />
       )}
