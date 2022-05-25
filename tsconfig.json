@@ -6,6 +6,7 @@
     "paths": {
       "@consts": ["./src/consts"],
       "types/*": ["./src/types/*"],
+      "@utils/*": ["./src/utils/*"],
       "@screens/*": ["./src/screens/*"],
       "@features/*": ["./src/features/*"],
       "@components/*": ["./src/components/*"]

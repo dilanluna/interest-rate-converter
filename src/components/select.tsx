@@ -1,24 +1,29 @@
+import { Key } from 'react';
 import { Picker } from '@react-native-picker/picker';
 import { StyleProp, StyleSheet, TextStyle } from 'react-native';
 
-export type Item = {
+type Item<V = number | string> = {
   label: string;
-  value: number | string;
+  value: V;
 };
 
-export default function Select({
+type SelectProps<T, V> = {
+  items: T[];
+  placeholder?: string;
+  value?: V;
+  style?: StyleProp<TextStyle>;
+  keyExtractor: (item: T) => Key;
+  onChange?: (itemValue: V, itemIndex: number) => void;
+};
+
+export default function Select<T extends Item, V>({
   value,
   items,
   style,
   onChange,
   placeholder,
-}: {
-  items: Item[];
-  placeholder?: string;
-  value?: number | string;
-  style?: StyleProp<TextStyle>;
-  onChange?: (itemValue: number | string, itemIndex: number) => void;
-}) {
+  keyExtractor,
+}: SelectProps<T, V>) {
   return (
     <Picker
       selectedValue={value}
@@ -31,11 +36,11 @@ export default function Select({
           label={placeholder}
         />
       )}
-      {items.map(({ label, value }) => (
+      {items.map((item) => (
         <Picker.Item
-          key={value}
-          label={label}
-          value={value}
+          label={item.label}
+          value={item.value}
+          key={keyExtractor(item)}
         />
       ))}
     </Picker>

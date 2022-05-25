@@ -1,15 +1,15 @@
-import { periods } from '@consts';
 import Select from '@components/select';
+import { Frequency, periods } from '@consts';
 
 export default function PeriodicitySelect({
   value,
   onChange,
 }: {
-  value?: string;
-  onChange: (value: string) => void;
+  value?: Frequency;
+  onChange: (value: Frequency) => void;
 }) {
-  const handleChange = (item: string | number) => {
-    onChange(item.toString());
+  const handleChange = (item: Frequency) => {
+    onChange(item);
   };
 
   return (
@@ -18,6 +18,7 @@ export default function PeriodicitySelect({
       items={periods}
       onChange={handleChange}
       placeholder="Selecciona"
+      keyExtractor={(item) => item.value}
     />
   );
 }

@@ -1,5 +1,5 @@
+import { Frequency } from '@consts';
 import Label from '@components/label';
-import { frequencies } from '@consts';
 import TextInput from '@components/input';
 import { useEffect, useState } from 'react';
 import { CalculateProps } from 'types/navigation';
@@ -9,31 +9,17 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import PeriodicitySelect from '@features/rates/periodicity-select';
 import RateCalcHeaderTitle from '@features/rates/rate-calc-header-title';
-
-function convertNominalToEffectiveInterestRate(
-  nominalIntersetRate: number,
-  periodicity: string,
-  compounded: string,
-): number {
-  const frequency = frequencies[periodicity] / frequencies[compounded];
-  return (1 + nominalIntersetRate / frequency) ** frequency - 1;
-}
-
-function convertEffectiveToNominalInterestRate(
-  effectiveInterestRate: number,
-  periodicity: string,
-  compounded: string,
-): number {
-  const frequency = frequencies[compounded] / frequencies[periodicity];
-  return frequency * ((effectiveInterestRate + 1) ** (1 / frequency) - 1);
-}
+import {
+  convertEffectiveToNominalInterestRate,
+  convertNominalToEffectiveInterestRate,
+} from '@utils/calcs';
 
 export default function Calculate({ route }: CalculateProps) {
   const [result, setResult] = useState<number>();
   const operation = useRateById(route.params.rateId);
   const [rateText, setRateText] = useState<string>();
-  const [compounded, setCompounded] = useState<string>();
-  const [periodicity, setPeriodicity] = useState<string>();
+  const [compounded, setCompounded] = useState<Frequency>();
+  const [periodicity, setPeriodicity] = useState<Frequency>();
 
   useEffect(() => {
     const rateIsAValidNumber = !isNaN(Number(rateText));
