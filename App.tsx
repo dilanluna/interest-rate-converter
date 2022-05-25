@@ -1,4 +1,5 @@
 import Rates from '@screens/rates';
+import { AppTheme } from '@consts';
 import Calculate from '@screens/calculate';
 import { StatusBar } from 'expo-status-bar';
 import { StackParamList } from 'types/navigation';
@@ -13,7 +14,7 @@ export default function App() {
   return (
     <SafeAreaProvider>
       <InterestRatePrivider>
-        <NavigationContainer>
+        <NavigationContainer theme={AppTheme}>
           <StatusBar style="auto" />
           <Stack.Navigator screenOptions={{ headerShown: false }}>
             <Stack.Screen

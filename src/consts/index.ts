@@ -1,3 +1,13 @@
+import { DefaultTheme, Theme } from '@react-navigation/native';
+
+export const AppTheme: Theme = {
+  ...DefaultTheme,
+  colors: {
+    ...DefaultTheme.colors,
+    background: '#F7F7F7',
+  },
+};
+
 export const frequencies = {
   yearly: 360,
   semiannual: 180,
