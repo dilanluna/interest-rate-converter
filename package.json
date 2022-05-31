@@ -1,7 +1,10 @@
 {
   "name": "interest-rate-converter",
-  "version": "1.2.1",
   "private": true,
+  "version": "1.2.1",
+  "description": "Convert between nominal and effective interest rates.",
+  "author": "Dylan Luna <me@dilanluna.com>",
+  "license": "MIT",
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
     "start": "expo start",
@@ -11,6 +14,10 @@
     "eject": "expo eject",
     "test": "jest",
     "release": "standard-version"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dilanluna/interest-rate-converter.git"
   },
   "dependencies": {
     "@react-native-picker/picker": "2.4.0",
