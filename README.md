@@ -1,6 +1,6 @@
 # Interest Rate Converter
 
-![Build](https://img.shields.io/github/workflow/status/dilanluna/interest-rate-converter/EAS%20Build%20and%20Submit) ![Version](https://img.shields.io/github/package-json/v/dilanluna/interest-rate-converter) ![Android Version](https://img.shields.io/badge/android-5.0%20%2B-green?logo=android&logoColor=white) ![License](https://img.shields.io/github/license/dilanluna/interest-rate-converter)
+![Build](https://img.shields.io/github/actions/workflow/status/dilanluna/interest-rate-converter/eas-build.yml?branch=main) ![Version](https://img.shields.io/github/package-json/v/dilanluna/interest-rate-converter) ![Android Version](https://img.shields.io/badge/android-5.0%20%2B-green?logo=android&logoColor=white) ![License](https://img.shields.io/github/license/dilanluna/interest-rate-converter)
 
 This app help you to convert between nominal and effective interest rate. Built with [React Native](https://reactnative.dev) and [Expo](https://expo.dev).
 
