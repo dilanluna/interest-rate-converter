@@ -13,7 +13,10 @@ export default function App() {
   return (
     <SafeAreaProvider>
       <NavigationContainer theme={AppTheme}>
-        <StatusBar style="auto" />
+        <StatusBar
+          translucent
+          style="auto"
+        />
         <Stack.Navigator screenOptions={{ headerShown: false }}>
           <Stack.Screen
             name="Rates"
