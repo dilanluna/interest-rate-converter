@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.3.0](https://github.com/dilanluna/interest-rate-converter/compare/v1.2.1...v1.3.0) (2025-01-28)
+
+
+### Features
+
+* make status bar translucent ([db241da](https://github.com/dilanluna/interest-rate-converter/commit/db241da20847b722bf20f091e91c10aae0d61493))
+
 ### [1.2.1](https://github.com/dilanluna/interest-rate-converter/compare/v1.2.0...v1.2.1) (2022-05-25)
 
 ## [1.2.0](https://github.com/dilanluna/interest-rate-converter/compare/v1.1.2...v1.2.0) (2022-05-25)
