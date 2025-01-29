@@ -14,9 +14,7 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true
     },
@@ -30,6 +28,14 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "e92e571f-259b-4483-aadb-61e89f0adbe6"
+      }
+    },
+    "plugins": [
+      ["expo-build-properties", { "android": { "targetSdkVersion": 33 } }]
+    ]
   }
 }
